@@ -1,5 +1,6 @@
 // Edit the initial year to match your GeoJSON data and tabs in index.html
 var year = "1910";
+var tabs = 11;
 
 // Edit the center point and zoom level
 var map = L.map('map', {
@@ -150,3 +151,19 @@ function comma(val){
   }
   return val;
 }
+
+$("body").keydown(function(e) {
+    var selectedTab = parseInt($(".selected").attr('id').replace('tab', ''));
+    var nextTab;
+
+    // previous tab with left arrow
+    if (e.keyCode == 37) {
+        nextTab = (selectedTab == 1) ? tabs : selectedTab - 1;
+    }
+    // next tab with "tab" or left
+    else if (e.keyCode == 39 || e.keyCode == 9)  {
+        nextTab = (selectedTab == tabs) ? 1 : selectedTab + 1;
+    }
+
+    $('#tab' + nextTab).click();
+});
