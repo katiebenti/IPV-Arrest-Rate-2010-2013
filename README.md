@@ -17,7 +17,5 @@ http://jackdougherty.github.io/leaflet-map-polygon-tabs
 - http://github.com/jackdougherty/leaflet-map-polygon-tabs-js
 
 ## To Do
-- should I load leaflet and JQuery from local library rather than CDN?
-- should I load the GeoJson data file earlier in the process to maximize efficiency? if so, is the best solution to move script.js closer to the top in index.html? if yes, should the entire script.js file be loaded as a function, as Alvin did?
-- is there a better way to make this more responsive for smaller devices? Hover does not work in iOS or Android tablets
-- is there a way to use keyboard tabbing to flip through tabs, to move through time? I tried some "tabindex" html but couldn't make it select tabs automatically 
+- Add "keydown" code to allow users to press the "tab" key to flip through tabs, to give the appearance of animation over time. Also this will help visually impaired users. Alvin Chang recommends: It would require an event called "keydown" -- and from there, you would have to be able to keep track of what year is currently clicked... and then a "right arrow" push would push a year 10 years ahead of that, and vice versa. See these answers: http://stackoverflow.com/questions/4104158/jquery-keypress-left-right-navigation and http://stackoverflow.com/questions/19347269/jquery-keypress-arrow-keys
+- Make code responsive for smaller devices. Hover does not work in iOS or Android tablets. Alvin Chang recommends: Maybe for smaller devices, instead of the menu bar at the top, you could have a pulldown menu? Also, right now there's a click and a hover event -- the click for mobile. One thing you could look into is jQuery Mobile, because that will give you a "tap" event, which makes it work better on mobile.
