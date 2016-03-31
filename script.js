@@ -89,7 +89,7 @@ info.onAdd = function (map) {
 info.update = function (props) {
   var winName =
   this._div.innerHTML = (props ?
-    '<div class="areaName">' + props.town + '</div>' : '<div class="areaName faded">Hover over areas</div>') + '<div class="areaLabel"><div class="areaValue">Home Value Index</div>' +(props ? '' + (checkNull(props["index" + year])) : '--') + '</div>';
+    '<div class="areaName">' + props.town + '</div>' : '<div class="areaName faded"><small>Hover over areas<br>Click tabs or arrow keys</small></div>') + '<div class="areaLabel"><div class="areaValue">Home Value Index</div>' +(props ? '' + (checkNull(props["index" + year])) : '--') + '</div>';
 };
 
 info.addTo(map);
@@ -154,7 +154,7 @@ function comma(val){
   return val;
 }
 
-// This watches for arrow keys to advance the tabs 
+// This watches for arrow keys to advance the tabs
 $("body").keydown(function(e) {
     var selectedTab = parseInt($(".selected").attr('id').replace('tab', ''));
     var nextTab;
