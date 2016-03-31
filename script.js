@@ -1,5 +1,7 @@
 // Edit the initial year to match your GeoJSON data and tabs in index.html
 var year = "1910";
+
+// Edit the number of tabs (TO DO: ask Ilya why 11, not 10)
 var tabs = 11;
 
 // Edit the center point and zoom level
@@ -152,6 +154,7 @@ function comma(val){
   return val;
 }
 
+// This watches for arrow keys to advance the tabs 
 $("body").keydown(function(e) {
     var selectedTab = parseInt($(".selected").attr('id').replace('tab', ''));
     var nextTab;
@@ -160,8 +163,8 @@ $("body").keydown(function(e) {
     if (e.keyCode == 37) {
         nextTab = (selectedTab == 1) ? tabs : selectedTab - 1;
     }
-    // next tab with "tab" or left
-    else if (e.keyCode == 39 || e.keyCode == 9)  {
+    // next tab with right arrow
+    else if (e.keyCode == 39)  {
         nextTab = (selectedTab == tabs) ? 1 : selectedTab + 1;
     }
 
