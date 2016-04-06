@@ -51,6 +51,7 @@ function style(feature) {
 
 // This highlights the polygon on hover
 function highlightFeature(e) {
+  resetHighlight(e);
   var layer = e.target;
   layer.setStyle({
     weight: 4,
