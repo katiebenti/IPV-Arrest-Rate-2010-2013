@@ -49,7 +49,7 @@ function style(feature) {
   };
 }
 
-// This highlights the polygon on hover
+// This highlights the polygon on hover, also for mobile
 function highlightFeature(e) {
   resetHighlight(e);
   var layer = e.target;
