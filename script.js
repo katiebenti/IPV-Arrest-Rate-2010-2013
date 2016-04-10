@@ -18,7 +18,7 @@ new L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 }).addTo(map);
 
-// Edit to upload GeoJSON data file from your local directory; removed var = geoJsonLayer since this is declared above
+// Edit to upload GeoJSON data file from your local directory
 $.getJSON("town-home-value-index.geojson", function (data) {
   geoJsonLayer = L.geoJson(data, {
     style: style,
@@ -27,7 +27,7 @@ $.getJSON("town-home-value-index.geojson", function (data) {
 });
 
 // Edit range cutoffs and colors to match your data; see http://colorbrewer.org
-// In this example, any values not in the ranges above displays as white
+// Any values not listed in the ranges below displays as the last color
 function getColor(d) {
   return d > 2.0 ? '#006d2c' :
          d > 1.5 ? '#2ca25f' :
@@ -45,7 +45,7 @@ function style(feature) {
     weight: 1,
     opacity: 1,
     color: 'black',
-    fillOpacity: 0.8,
+    fillOpacity: 0.8
   };
 }
 
@@ -90,7 +90,6 @@ info.update = function (props) {
   this._div.innerHTML = (props ?
     '<div class="areaName">' + props.town + '</div>' : '<div class="areaName faded"><small>Hover over areas<br>Click tabs or arrow keys</small></div>') + '<div class="areaLabel"><div class="areaValue">Home Value Index</div>' +(props ? '' + (checkNull(props["index" + year])) : '--') + '</div>';
 };
-
 info.addTo(map);
 
 // When a new tab is selected, this changes the year displayed
@@ -102,29 +101,24 @@ $(".tabItem").click(function() {
   geoJsonLayer.setStyle(style);
 });
 
-var legend = L.control({position: 'bottomright'});
-
-// Modify grades to match the range cutoffs inserted above
+// Edit grades in legend to match the range cutoffs inserted above
 // In this example, the last grade will appear as "2+"
+var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
   var div = L.DomUtil.create('div', 'info legend'),
     grades = [0.1, 0.5, 1.0, 1.5, 2],
     labels = [],
     from, to;
-
   for (var i = 0; i < grades.length; i++) {
     from = grades[i];
     to = grades[i + 1];
-
     labels.push(
       '<i style="background:' + getColor(from + 1) + '"></i> ' +
       from + (to ? '&ndash;' + to : '+'));
   }
-
   div.innerHTML = labels.join('<br>');
   return div;
 };
-
 legend.addTo(map);
 
 // In info.update, this checks if GeoJSON data contains a null value, and if so displays "--"
@@ -145,7 +139,7 @@ function checkThePct(a,b) {
   }
 }
 
-// Use info.update if GeoJSON data needs to be displayed with commas (such as 123,456)
+// Use in info.update if GeoJSON data needs to be displayed with commas (such as 123,456)
 function comma(val){
   while (/(\d+)(\d{3})/.test(val.toString())){
     val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
