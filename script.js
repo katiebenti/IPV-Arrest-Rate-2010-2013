@@ -30,10 +30,10 @@ $.getJSON("town-home-value-index.geojson", function (data) {
 // Any values not listed in the ranges below displays as the last color
 function getColor(d) {
   return d > 2.0 ? '#006d2c' :
-         d > 1.5 ? '#2ca25f' :
-         d > 1.0 ? '#66c2a4' :
-         d > 0.5 ? '#b2e2e2' :
-         d > 0.1 ? '#edf8fb' :
+         d > 1.5 ? '#31a354' :
+         d > 1.0 ? '#74c476' :
+         d > 0.5 ? '#bae4b3' :
+         d > 0.1 ? '#edf8e9' :
                    'white' ;
 }
 
@@ -45,7 +45,7 @@ function style(feature) {
     weight: 1,
     opacity: 1,
     color: 'black',
-    fillOpacity: 0.8
+    fillOpacity: 0.9
   };
 }
 
@@ -112,8 +112,9 @@ legend.onAdd = function (map) {
   for (var i = 0; i < grades.length; i++) {
     from = grades[i];
     to = grades[i + 1];
+    // manually inserted from + 0.1 to start one step above default 0 = white color
     labels.push(
-      '<i style="background:' + getColor(from + 1) + '"></i> ' +
+      '<i style="background:' + getColor(from + 0.1) + '"></i> ' +
       from + (to ? '&ndash;' + to : '+'));
   }
   div.innerHTML = labels.join('<br>');
