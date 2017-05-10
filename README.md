@@ -1,8 +1,8 @@
 # leaflet-map-polygon-tabs
 Leaflet thematic polygon map, with hover info, tabs to display time periods, and data drawn from GeoJSON file
 
-## Demo
-https://katiebenti.github.io/leaflet-map-polygon-tabs/
+## live link
+https://katiebenti.github.io/IPV-Arrest-Rate-2010-2013/
 
 ## Credits
 - Map design by [@alvinschang](https://github.com/alvinschang) Connecticut Mirror http://ctmirror.org
